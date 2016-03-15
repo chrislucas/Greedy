@@ -56,14 +56,15 @@ public class EightQueenProblem {
 	 * */
 	
 	public static void permutation(int queen, int [] set, int l, int c) {
-		for(int row=1; row<9; row++) {
+		int len = set.length;
+		for(int row=1; row<len; row++) {
 			if(isPossible(row, queen, set)) {
 				set[queen] = row;
-				if(queen == set.length && set[c] == l) {
-					System.out.printf("#%d", ++counter);
-					for(int i=1; i<9; i++)
+				if(queen == len-1 /*&& set[c] == l*/) {
+					System.out.printf("%d#", ++counter);
+					for(int i=1; i<len; i++)
 						System.out.printf(" %d ", set[i]);
-					System.out.println("\n");
+					System.out.printf("\n");
 				} else {
 					permutation(queen + 1, set, c, l);
 				}
